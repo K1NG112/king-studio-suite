@@ -24,7 +24,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-mono flex flex-col p-6 selection:bg-amber-500 selection:text-black">
-      {/* PLATFORM MONITOR HEADER LAYER */}
+      {/* MONITOR HEADER */}
       <header className="border-b border-neutral-800 pb-4 mb-6 flex flex-wrap justify-between items-center gap-4 bg-neutral-900/40 p-4 rounded border">
         <div className="flex items-center space-x-4">
           <h1 className="text-xl font-black text-amber-500 tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">👑 KING STUDIO SUITE</h1>
@@ -40,7 +40,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* STAR PLAYER COGNITIVE AI CONTROLLER PANEL */}
+      {/* COGNITIVE AI CONTROLLER PANEL */}
       <div className="bg-neutral-900/80 border border-neutral-800 p-4 rounded mb-6 border-l-4 border-l-amber-500 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-xl">
         <div className="space-y-0.5">
           <span className="text-xs font-black text-amber-400 block tracking-widest">⭐ STAR PLAYER: COGNITIVE AI DIRECTOR ({aiMode})</span>
@@ -55,20 +55,19 @@ export default function App() {
       {/* WORKSPACE NAVIGATION FILTER TABS ROW */}
       <div className="flex gap-1 border-b border-neutral-800 pb-3 mb-6 overflow-x-auto whitespace-nowrap">
         {['movie-engine', 'asset-bin', 'cast-forge', 'sound-stage', 'animation-sync', 'executive-vault'].map((tab) => (
-          <button key={tab} onClick={() => setActiveTab(tab)} className={`px-4 py-2 text-xs font-black uppercase rounded transition tracking-wider ${activeTab === tab ? 'bg-amber-500 text-black shadow-lg font-black' : 'bg-neutral-900/60 text-neutral-400 hover:bg-neutral-900 hover:text-neutral-200'}`}>
+          <button key={tab} onClick={() => setActiveTab(tab)} className={`px-4 py-2 text-xs font-black uppercase rounded transition tracking-wider ${activeTab === tab ? 'bg-amber-500 text-black shadow-lg' : 'bg-neutral-900/60 text-neutral-400 hover:bg-neutral-900'}`}>
             {tab.replace('-', ' ')}
           </button>
         ))}
       </div>
 
-      {/* CORE WORKSPACE PANEL OUTPUT VIEWERS */}
+      {/* PANEL MAIN RUNNING CONTROLLER OUTPUT */}
       <main className="flex-1 bg-neutral-900/20 border border-neutral-800 rounded-xl p-6 backdrop-blur">
-        
         {activeTab === 'movie-engine' && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 space-y-4">
               <h3 className="text-xs font-black text-amber-400 uppercase tracking-widest">🎬 MOVIE ENGINE DIRECTING SCREEN</h3>
-              <textarea value={scriptText} onChange={(e) => setScriptText(e.target.value)} className="w-full h-56 bg-neutral-950 border border-neutral-800 rounded-lg p-4 text-xs font-mono text-neutral-200 leading-relaxed focus:outline-none focus:border-amber-500 resize-none shadow-inner" />
+              <textarea defaultValue="INT. KING STUDIO - NIGHT\nAutonomous AI Core processing motion vectors at 8K resolution..." className="w-full h-56 bg-neutral-950 border border-neutral-800 rounded-lg p-4 text-xs font-mono text-neutral-200 leading-relaxed focus:outline-none focus:border-amber-500 resize-none shadow-inner" />
             </div>
             <div className="bg-neutral-950 border border-neutral-800 p-4 rounded-lg flex flex-col justify-between">
               <div>
@@ -88,7 +87,7 @@ export default function App() {
 
         {activeTab === 'asset-bin' && (
           <div className="space-y-4">
-            <h3 className="text-xs font-black text-amber-400 uppercase tracking-widest">📁 AUTOMATED B-ROLL & stock ASSET BIN</h3>
+            <h3 className="text-xs font-black text-amber-400 uppercase tracking-widest">📁 AUTOMATED B-ROLL &amp; stock ASSET BIN</h3>
             <p className="text-xs text-neutral-400">AI automatically generates multi-angle background clips matching screenplay lines.</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
               {['Atmospheric Smoke Trail', 'City Skyline Overhead', 'High-Shutter Car Chase Loop', 'Low-Key Suspense Corridor'].map((item) => (
@@ -106,7 +105,7 @@ export default function App() {
           <div className="space-y-6">
             <div className="flex flex-wrap justify-between items-center border-b border-neutral-800 pb-3 gap-2">
               <div>
-                <h3 className="text-xs font-black text-amber-400 uppercase tracking-widest">👥 CAST FORGE & INTERACTIVE WARDROBE</h3>
+                <h3 className="text-xs font-black text-amber-400 uppercase tracking-widest">👥 CAST FORGE &amp; INTERACTIVE WARDROBE</h3>
                 <p className="text-xs text-neutral-400">Apply synthetic fabrics and adjust light values via WebGL filters.</p>
               </div>
               <div className="flex gap-1 bg-neutral-950 p-1 rounded border border-neutral-800">
