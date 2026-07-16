@@ -1,142 +1,106 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Hls from 'hls.js';
+import React, { useState } from 'react';
 
 export default function App() {
-  const [profile, setProfile] = useState({
-    displayName: "King Founder",
-    role: "owner", 
-    storageUsed: 42 * 1024 * 1024 * 1024, 
-    storageQuota: 50 * 1024 * 1024 * 1024 
-  });
-
   const [activeTab, setActiveTab] = useState('movie-engine');
-  const [aiMode, setAiMode] = useState('Co-Pilot');
-  const [aiStatusMessage, setAiStatusMessage] = useState('Awaiting prompt instruction commands...');
-  const [currentGenre, setCurrentGenre] = useState('Action');
-  const [scriptText, setScriptText] = useState("INT. KING STUDIO - NIGHT\n\nThe gold telemetry waveforms pulse aggressively. The Autonomous AI Core processes motion vectors at 8K resolution...");
-  
-  const [selectedOutfit, setSelectedOutfit] = useState('Royal Tuxedo');
-  const [selectedActor, setSelectedActor] = useState('Nova');
-  const [vocalsCadence, setVocalsCadence] = useState('Heavyweight Hip-Hop grit');
-  const [hummingDetected, setHummingDetected] = useState(false);
-  const [lipSyncStatus, setLipSyncStatus] = useState('Idle');
-  
-  const [logoClicks, setLogoClicks] = useState(0);
-  const [vaultUnlocked, setVaultUnlocked] = useState(false);
-  const [show2FAModal, setShow2FAModal] = useState(false);
-  const [passkeyCode, setPasskeyCode] = useState('');
-  const [showUpgradeDrawer, setShowUpgradeDrawer] = useState(false);
-
-  const videoRef = useRef(null);
-  const hlsStreamUrl = "https://mux.dev";
-
-  useEffect(() => {
-    if (videoRef.current) {
-      if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(hlsStreamUrl);
-        hls.attachMedia(videoRef.current);
-      } else if (videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
-        videoRef.current.src = hlsStreamUrl;
-      }
-    }
-  }, [activeTab]);
-
-  const handleLogoTouch = () => {
-    const total = logoClicks + 1;
-    setLogoClicks(total);
-    if (total >= 3) {
-      setLogoClicks(0);
-      setShow2FAModal(true);
-    }
-  };
-
-  const verifyPasscode = () => {
-    if (passkeyCode === '777' || passkeyCode !== '') {
-      setShow2FAModal(false);
-      setVaultUnlocked(true);
-      setActiveTab('executive-vault');
-    }
-  };
-
-  const usagePercentage = (profile.storageUsed / profile.storageQuota) * 100;
-  const isApproachingCeiling = usagePercentage >= 90;
-  const bypassStorageRules = profile.role === 'owner' || profile.role === 'family' || profile.role === 'vip_friend';
-
-  const triggerAutoPilotEngine = () => {
-    setAiMode('Auto-Pilot');
-    setAiStatusMessage('Parsing scene screenplay text chunks... Extracting environment assets... Launching Multi-Threaded rendering nodes...');
-    setLipSyncStatus('Synchronizing text-to-phoneme animation grids...');
-    setTimeout(() => {
-      setAiStatusMessage('Compiling final uncompressed video frame buffers... Stitching dialogue audio sequences... Output master render ready.');
-      setLipSyncStatus('Complete');
-    }, 4000);
-  };
+  const [role, setRole] = useState('owner');
+  const [vaultUnlocked, setVaultUnlocked] = useState(true);
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-mono flex flex-col selection:bg-amber-500 selection:text-black">
-      <header className="border-b border-neutral-800 bg-neutral-900/90 backdrop-blur px-6 py-4 flex flex-wrap gap-4 items-center justify-between sticky top-0 z-50">
-        <div className="flex items-center space-x-6">
-          <h1 onClick={handleLogoTouch} className="text-xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-600 cursor-pointer select-none">
-            👑 KING STUDIO <span className="text-[10px] text-neutral-500 font-normal tracking-normal">v9.9 APEX SUITE</span>
-          </h1>
-          <select value={profile.role} onChange={(e) => setProfile({ ...profile, role: e.target.value })} className="bg-neutral-950 border border-neutral-800 text-[10px] text-amber-500 font-bold px-2 py-1 rounded">
-            <option value="owner">View: Owner Area</option>
-            <option value="staff">View: Staff Area</option>
-            <option value="family">View: Family Profile</option>
-            <option value="vip_friend">View: VIP Lounge Access</option>
-            <option value="creator">View: Standard Creator Access</option>
-          </select>
-        </div>
-        <div className="flex items-center space-x-4 max-w-sm w-full">
-          <div className="w-full bg-neutral-950 h-3 rounded p-0.5 border border-neutral-800 overflow-hidden relative">
-            <div className={`h-full transition-all duration-500 ${bypassStorageRules ? 'bg-purple-500' : isApproachingCeiling ? 'bg-red-600 animate-pulse' : 'bg-amber-500'}`} style={{ width: `${bypassStorageRules ? 100 : Math.min(usagePercentage, 100)}%` }}></div>
-          </div>
-          <span className="text-[11px] whitespace-nowrap text-neutral-400 font-bold">
-            {bypassStorageRules ? '👑 SOVEREIGN UNLIMITED' : `${(profile.storageUsed / (1024*1024*1024)).toFixed(0)}GB / ${(profile.storageQuota / (1024*1024*1024)).toFixed(0)}GB`}
-          </span>
-        </div>
+    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-mono flex flex-col p-6">
+      <header className="border-b border-neutral-800 pb-4 mb-6 flex justify-between items-center">
+        <h1 className="text-xl font-black text-amber-500 tracking-widest">👑 KING STUDIO SUITE</h1>
+        <select value={role} onChange={(e) => setRole(e.target.value)} className="bg-neutral-900 border border-neutral-800 text-amber-400 p-2 text-xs font-bold rounded">
+          <option value="owner">Owner Area</option>
+          <option value="staff">Staff Area</option>
+          <option value="creator">Creator Access</option>
+        </select>
       </header>
 
-      {show2FAModal && (
-        <div className="fixed inset-0 bg-black/95 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-neutral-900 border border-amber-500/30 p-6 rounded max-w-md w-full shadow-2xl">
-            <h3 className="text-sm font-black text-amber-400 tracking-wider mb-1">🔐 EXECUTIVE METRIC IDENTITY VALIDATION</h3>
-            <p className="text-[11px] text-neutral-500 mb-4">Verification required to bypass peripheral firewalls. Input code profile sequence keys to entry.</p>
-            <input type="password" placeholder="ENTER SYSTEM INTERPASS KEYWORDS" className="w-full bg-neutral-950 border border-neutral-800 rounded p-3 text-center tracking-widest text-amber-400 mb-4 text-xs focus:outline-none" value={passkeyCode} onChange={(e) => setPasskeyCode(e.target.value)} />
-            <div className="flex space-x-2">
-              <button onClick={() => setShow2FAModal(false)} className="w-1/2 border border-neutral-800 text-[11px] py-2 hover:bg-neutral-800 text-neutral-400">CANCEL</button>
-              <button onClick={verifyPasscode} className="w-1/2 bg-amber-500 text-black text-[11px] font-bold py-2 hover:bg-amber-400">AUTHORIZE IDENTITY</button>
+      <div className="bg-neutral-900 border border-neutral-800 p-4 rounded mb-6 border-l-4 border-amber-500">
+        <span className="text-xs font-black text-amber-400 block tracking-widest">⭐ STAR PLAYER ACTIVE</span>
+        <p className="text-xs text-neutral-400 mt-1 italic">"Autonomous AI Director Core Online: Core workflow scripts armed and ready."</p>
+      </div>
+
+      <div className="flex gap-2 border-b border-neutral-800 pb-3 mb-6 overflow-x-auto">
+        {['movie-engine', 'asset-bin', 'cast-forge', 'sound-stage', 'animation-sync', 'executive-vault'].map((tab) => (
+          <button key={tab} onClick={() => setActiveTab(tab)} className={`px-4 py-2 text-xs font-bold uppercase rounded ${activeTab === tab ? 'bg-amber-500 text-black' : 'bg-neutral-900 text-neutral-400'}`}>
+            {tab.replace('-', ' ')}
+          </button>
+        ))}
+      </div>
+
+      <main className="flex-1 bg-neutral-900/40 border border-neutral-800 rounded p-6">
+        {activeTab === 'movie-engine' && (
+          <div className="space-y-4">
+            <h3 className="text-sm font-bold text-amber-400">🎬 MOVIE ENGINE DIRECTING SCREEN</h3>
+            <textarea defaultValue="INT. KING STUDIO - NIGHT\nAutonomous AI Core processing motion vectors at 8K resolution..." className="w-full h-40 bg-neutral-950 border border-neutral-800 rounded p-4 text-xs text-neutral-300 resize-none focus:outline-none" />
+          </div>
+        )}
+
+        {activeTab === 'asset-bin' && (
+          <div className="space-y-2">
+            <h3 className="text-sm font-bold text-amber-400">📁 B-ROLL & stock ASSET BIN</h3>
+            <p className="text-xs text-neutral-400">Automated cutaway tracks mapped directly to script descriptors.</p>
+          </div>
+        )}
+
+        {activeTab === 'cast-forge' && (
+          <div className="space-y-4">
+            <h3 className="text-sm font-bold text-amber-400">👥 CAST FORGE & WARDROBE</h3>
+            <div className="p-4 bg-neutral-950 border border-neutral-800 rounded text-xs text-neutral-400">
+              <span className="text-neutral-200 block font-bold">Active Suit: Royal Tuxedo Matrix Palette</span>
+              <span className="text-cyan-400 block font-bold mt-1">✓ NEURAL WEBGL LIGHTING MATCH ENGAGED</span>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
-      <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
-        <nav className="w-full lg:w-64 bg-neutral-950 border-b lg:border-b-0 lg:border-r border-neutral-800 p-4 space-y-1 flex flex-row lg:flex-col justify-start overflow-x-auto lg:overflow-x-visible">
-          <span className="hidden lg:block text-[9px] font-black text-neutral-600 tracking-widest uppercase mb-2">CREATION CHANNELS</span>
-          <button onClick={() => setActiveTab('movie-engine')} className={`w-full text-left px-3 py-2.5 text-xs transition rounded ${activeTab === 'movie-engine' ? 'bg-amber-500/10 text-amber-400 font-bold border-l-2 border-amber-500' : 'text-neutral-400 hover:bg-neutral-900'}`}>🎬 MOVIE ENGINE</button>
-          <button onClick={() => setActiveTab('asset-bin')} className={`w-full text-left px-3 py-2.5 text-xs transition rounded ${activeTab === 'asset-bin' ? 'bg-amber-500/10 text-amber-400 font-bold border-l-2 border-amber-500' : 'text-neutral-400 hover:bg-neutral-900'}`}>📁 B-ROLL ASSET BIN</button>
-          <button onClick={() => setActiveTab('cast-forge')} className={`w-full text-left px-3 py-2.5 text-xs transition rounded ${activeTab === 'cast-forge' ? 'bg-amber-500/10 text-amber-400 font-bold border-l-2 border-amber-500' : 'text-neutral-400 hover:bg-neutral-900'}`}>👥 CAST & WARDROBE</button>
-          <button onClick={() => setActiveTab('sound-stage')} className={`w-full text-left px-3 py-2.5 text-xs transition rounded ${activeTab === 'sound-stage' ? 'bg-amber-500/10 text-amber-400 font-bold border-l-2 border-amber-500' : 'text-neutral-400 hover:bg-neutral-900'}`}>🔊 SOUND STAGE CORE</button>
-          <button onClick={() => setActiveTab('animation-sync')} className={`w-full text-left px-3 py-2.5 text-xs transition rounded ${activeTab === 'animation-sync' ? 'bg-amber-500/10 text-amber-400 font-bold border-l-2 border-amber-500' : 'text-neutral-400 hover:bg-neutral-900'}`}>⚡ AI ANIMATION SYNC</button>
-          {vaultUnlocked && (
-            <>
-              <div className="h-px bg-neutral-800 my-4 hidden lg:block"></div>
-              <span className="hidden lg:block text-[9px] font-black text-red-500 tracking-widest uppercase mb-2">SECURE EXECS LABELS</span>
-              <button onClick={() => setActiveTab('executive-vault')} className={`w-full text-left px-3 py-2.5 text-xs border border-red-900/30 transition rounded ${activeTab === 'executive-vault' ? 'bg-red-500/10 text-red-400 font-bold border-l-2 border-red-500' : 'text-neutral-400 hover:bg-neutral-900'}`}>⚙️ CONTROL VAULTS</button>
-            </>
-          )}
-        </nav>
+        {activeTab === 'sound-stage' && (
+          <div className="space-y-2">
+            <h3 className="text-sm font-bold text-amber-400">🔊 SOUND STAGE AUDIO</h3>
+            <p className="text-xs text-neutral-400">Timbre Cadence Voice Clones: Heavyweight Hip-Hop grit / Elite R&B vocal runs active.</p>
+          </div>
+        )}
 
-        <main className="flex-1 p-6 overflow-y-auto space-y-6">
-          {isApproachingCeiling && !bypassStorageRules && (
-            <div className="bg-red-950/60 border border-red-500/40 p-4 rounded flex flex-col md:flex-row justify-between items-center gap-4 animate-pulse">
-              <div>
-                <h4 className="text-xs font-black text-red-400 tracking-wider">HARD CAP LIMIT WARNING REACHED (&gt;=90%)</h4>
-                <p className="text-[11px] text-neutral-400">Upload lanes will freeze to secure target buffer bounds. Purchase additional token balances.</p>
+        {activeTab === 'animation-sync' && (
+          <div className="space-y-2">
+            <h3 className="text-sm font-bold text-amber-400">⚡ AI ANIMATION SYNC</h3>
+            <p className="text-xs text-neutral-400">Humming-To-Beat rhythm clock tracking and neural lip-sync automation paths initialized.</p>
+          </div>
+        )}
+
+        {activeTab === 'executive-vault' && vaultUnlocked && (
+          <div className="space-y-4 animate-fade-in">
+            {role === 'owner' && (
+              <div className="border border-amber-500/20 p-4 rounded bg-neutral-950">
+                <span className="text-xs font-black text-amber-400 block">👑 THE THRONE ROOM (OWNER AREA)</span>
+                <div className="grid grid-cols-2 gap-4 mt-3 text-xs">
+                  <div className="p-2 border border-neutral-800">Gross Rev: <strong className="text-amber-400">$24,950,200</strong></div>
+                  <div className="p-2 border border-neutral-800">MRR Flow: <strong className="text-cyan-400">$1,450,900</strong></div>
+                </div>
+                <div className="mt-4 pt-2 border-t border-neutral-800 flex items-center gap-2 text-xs">
+                  <input type="range" className="w-full accent-amber-500" />
+                  <span className="text-amber-400 font-bold whitespace-nowrap">$450k/mo Payroll</span>
+                </div>
               </div>
-              <button onClick={() => setShowUpgradeDrawer(true)} className="bg-red-600 hover:bg-red-500 text-white font-bold text-[11px] px-4 py-2 rounded shadow">UPGRADE ENG PORTAL</button>
-            </div>
-          )}
+            )}
 
+            {role === 'staff' && (
+              <div className="border border-cyan-500/20 p-4 rounded bg-neutral-950">
+                <span className="text-xs font-black text-cyan-400 block">⚙️ OPERATIONS DECK (STAFF AREA)</span>
+                <p className="text-xs text-neutral-400 mt-2">Active CRM ticket systems, storage quota override sliders, and security logs loaded.</p>
+              </div>
+            )}
+          </div>
+        )}
+      </main>
+
+      <footer className="border-t border-neutral-800 mt-6 pt-4 flex justify-between text-[11px] text-neutral-500">
+        <div className="flex gap-4">
+          <span>👑 Royal Pass: $29/mo</span>
+          <span>⚡ Studio Empire Elite: $100/mo</span>
+        </div>
+        <span>🔒 256-Bit SSL Secured</span>
+      </footer>
+    </div>
+  );
+}
