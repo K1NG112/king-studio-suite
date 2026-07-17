@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 export default function App() {
   const [activeTab, setActiveTab] = useState('movie-engine');
   const [role, setRole] = useState('owner');
-  const [vaultUnlocked, setVaultUnlocked] = useState(true);
   const [selectedOutfit, setSelectedOutfit] = useState('Royal Tuxedo');
   const [selectedActor, setSelectedActor] = useState('Nova');
-  const [vocalsCadence, setVocalsCadence] = useState('Heavyweight Hip-Hop grit');
+  const [vocalsCadence, setVocalsCadence] = useState('High-Performance Dialogue Flow');
   const [hummingActive, setHummingActive] = useState(false);
   const [lipSyncStatus, setLipSyncStatus] = useState('Idle');
   const [aiMode, setAiMode] = useState('Co-Pilot');
@@ -14,17 +13,17 @@ export default function App() {
 
   const triggerAutopilot = () => {
     setAiMode('Auto-Pilot');
-    setAiText('Parsing script metadata... Compiling multi-angle frames... Rendering final uncompressed master video...');
-    setLipSyncStatus('Synchronizing text-to-phoneme animation matrix...');
+    setAiText('Autonomous Engine active. Matching dynamic motion vectors for multi-angle grids...');
+    setLipSyncStatus('Syncing vocal tracks...');
     setTimeout(() => {
-      setAiText('Compilation success. Final 8K render master asset deployed safely.');
+      setAiText('Compilation success! Final 8K render master asset deployed safely.');
       setLipSyncStatus('Complete ✓');
     }, 3000);
   };
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-mono flex flex-col p-6 selection:bg-amber-500 selection:text-black">
-      {/* MONITOR HEADER */}
+      {/* PLATFORM MONITOR HEADER LAYER */}
       <header className="border-b border-neutral-800 pb-4 mb-6 flex flex-wrap justify-between items-center gap-4 bg-neutral-900/40 p-4 rounded border">
         <div className="flex items-center space-x-4">
           <h1 className="text-xl font-black text-amber-500 tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">👑 KING STUDIO SUITE</h1>
@@ -40,7 +39,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* COGNITIVE AI CONTROLLER PANEL */}
+      {/* STAR PLAYER COGNITIVE AI CONTROLLER PANEL */}
       <div className="bg-neutral-900/80 border border-neutral-800 p-4 rounded mb-6 border-l-4 border-l-amber-500 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-xl">
         <div className="space-y-0.5">
           <span className="text-xs font-black text-amber-400 block tracking-widest">⭐ STAR PLAYER: COGNITIVE AI DIRECTOR ({aiMode})</span>
@@ -55,7 +54,7 @@ export default function App() {
       {/* WORKSPACE NAVIGATION FILTER TABS ROW */}
       <div className="flex gap-1 border-b border-neutral-800 pb-3 mb-6 overflow-x-auto whitespace-nowrap">
         {['movie-engine', 'asset-bin', 'cast-forge', 'sound-stage', 'animation-sync', 'executive-vault'].map((tab) => (
-          <button key={tab} onClick={() => setActiveTab(tab)} className={`px-4 py-2 text-xs font-black uppercase rounded transition tracking-wider ${activeTab === tab ? 'bg-amber-500 text-black shadow-lg' : 'bg-neutral-900/60 text-neutral-400 hover:bg-neutral-900'}`}>
+          <button key={tab} onClick={() => setActiveTab(tab)} className={`px-4 py-2 text-xs font-black uppercase rounded transition tracking-wider ${activeTab === tab ? 'bg-amber-500 text-black shadow-lg font-black' : 'bg-neutral-900/60 text-neutral-400 hover:bg-neutral-900'}`}>
             {tab.replace('-', ' ')}
           </button>
         ))}
@@ -67,7 +66,7 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 space-y-4">
               <h3 className="text-xs font-black text-amber-400 uppercase tracking-widest">🎬 MOVIE ENGINE DIRECTING SCREEN</h3>
-              <textarea defaultValue="INT. KING STUDIO - NIGHT\nAutonomous AI Core processing motion vectors at 8K resolution..." className="w-full h-56 bg-neutral-950 border border-neutral-800 rounded-lg p-4 text-xs font-mono text-neutral-200 leading-relaxed focus:outline-none focus:border-amber-500 resize-none shadow-inner" />
+              <textarea defaultValue={"INT. KING STUDIO - NIGHT\n\nThe generation sequence is locking framework boundaries. We are officially going live.\n\nThe Cognitive AI Core flashes green, initializing a hyper-shutter 8K render pass."} className="w-full h-56 bg-neutral-950 border border-neutral-800 rounded-lg p-4 text-xs font-mono text-neutral-200 leading-relaxed focus:outline-none focus:border-amber-500 resize-none shadow-inner" />
             </div>
             <div className="bg-neutral-950 border border-neutral-800 p-4 rounded-lg flex flex-col justify-between">
               <div>
@@ -127,7 +126,7 @@ export default function App() {
                 <div className="w-16 h-16 rounded-full border-2 border-dashed border-amber-500/40 flex items-center justify-center text-xl mb-2">👤</div>
                 <span className="text-xs font-bold text-neutral-200">ASSIGNED TALENT: {selectedActor}</span>
                 <span className="text-[10px] text-neutral-500 uppercase mt-0.5">Texture Overlay: {selectedOutfit}</span>
-                <span className="text-[9px] text-cyan-400 font-bold tracking-widest mt-3">✓ NEURAL WEBGL LIGHTING MATCH ENGAGED</span>
+                <span className="text-[9px] text-cyan-400 font-bold tracking-widest mt-3">✓ NEURAL WEBGL LIGHTING FILTER ENGAGED</span>
               </div>
             </div>
           </div>
