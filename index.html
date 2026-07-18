@@ -3,135 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>👑 King Studio Suite v9.9 Apex Final</title>
-  <!-- Load Tailwind Engine for instant premium styling outputs -->
+  <title>👑 King Studio Suite v10.0 Royal Omnipresent</title>
+  <!-- Load Tailwind Engine for instant premium smart city styling grids -->
   <script src="https://tailwindcss.com"></script>
-  <!-- Load React Core Engine Natively to ensure zero compilation barriers -->
+  <!-- Load React Core Engines Natively to bypass heavy cloud compilation blocks -->
   <script src="https://unpkg.com" crossorigin></script>
   <script src="https://unpkg.com" crossorigin></script>
-  <!-- Load Babel compiler to parse components instantly inside the browser view -->
+  <!-- Load Babel browser parser -->
   <script src="https://unpkg.com"></script>
 </head>
-<body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-amber-500 selection:text-black font-mono">
+<body class="bg-[#050505] text-neutral-100 antialiased font-mono selection:bg-cyan-500 selection:text-black">
   
   <div id="root"></div>
 
   <script type="text/babel">
     function App() {
+      // Command Center Interactivity States
       const [activeTab, setActiveTab] = React.useState('movie-engine');
       const [role, setRole] = React.useState('owner');
-      const [selectedOutfit, setSelectedOutfit] = React.useState('Royal Tuxedo');
+      const [aiMode, setAiMode] = React.useState('Co-Pilot');
+      const [aiText, setAiText] = React.useState('Awaiting biometric smart city network instructions...');
+      const [selectedOutfit, setSelectedOutfit] = React.useState('Black Velvet Tuxedo');
       const [selectedActor, setSelectedActor] = React.useState('Nova');
       const [vocalsCadence, setVocalsCadence] = React.useState('High-Performance Dialogue Flow');
       const [hummingActive, setHummingActive] = React.useState(false);
       const [lipSyncStatus, setLipSyncStatus] = React.useState('Idle');
-      const [aiMode, setAiMode] = React.useState('Co-Pilot');
-      const [aiText, setAiText] = React.useState('Awaiting instruction parameters...');
 
       const triggerAutopilot = () => {
         setAiMode('Auto-Pilot');
-        setAiText('Autonomous Engine active. Matching dynamic motion vectors for multi-angle grids...');
-        setLipSyncStatus('Syncing vocal tracks...');
+        setAiText('Starlink loop active. Parsing script nodes... Running 8K hyper-shutter render pipelines...');
+        setLipSyncStatus('Syncing dynamic timelines...');
         setTimeout(() => {
-          setAiText('Compilation success! Final 8K render master asset deployed safely.');
+          setAiText('Tesla compute run complete. 8K Master asset stitched and secured.');
           setLipSyncStatus('Complete ✓');
         }, 3000);
       };
 
       return (
-        <div className="min-h-screen flex flex-col p-6">
-          {/* HEADER LAYER */}
-          <header className="border-b border-neutral-800 pb-4 mb-6 flex flex-wrap justify-between items-center gap-4 bg-neutral-900/40 p-4 rounded border">
+        <div className="min-h-screen flex flex-col p-6 max-w-[1600px] mx-auto w-full space-y-6">
+          
+          {/* HEADER DASHBOARD MONITOR BAR */}
+          <header className="border border-neutral-800 bg-neutral-900/30 backdrop-blur-md p-4 rounded-xl flex flex-wrap justify-between items-center gap-4 border-l-4 border-l-[#00D8FF]">
             <div className="flex items-center space-x-4">
-              <h1 className="text-xl font-black text-amber-500 tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">👑 KING STUDIO SUITE</h1>
-              <select value={role} onChange={(e) => setRole(e.target.value)} className="bg-neutral-950 border border-neutral-800 text-amber-400 p-2 text-xs font-bold rounded focus:outline-none focus:border-amber-500">
+              <h1 className="text-lg font-black tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-amber-500 to-yellow-600 select-none">👑 KING STUDIO SUITE</h1>
+              <select value={role} onChange={(e) => setRole(e.target.value)} className="bg-neutral-950 border border-neutral-800 text-cyan-400 p-2 text-xs font-bold rounded focus:outline-none focus:border-cyan-500">
                 <option value="owner">View: Owner Area</option>
                 <option value="staff">View: Staff Area</option>
                 <option value="creator">View: Creator Access</option>
               </select>
             </div>
-            <div className="flex items-center space-x-3 text-xs bg-neutral-950 px-3 py-1.5 rounded border border-neutral-800">
-              <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
-              <span className="text-neutral-400 font-bold">👑 SOVEREIGN UNLIMITED CORE (100% FREE SPACE)</span>
+            <div className="flex items-center space-x-3 text-xs bg-neutral-950 px-3 py-2 rounded-lg border border-neutral-800">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span className="text-neutral-400 font-bold">👑 SOVEREIGN UNLIMITED CORE (100% FREE STORAGE)</span>
             </div>
           </header>
 
-          {/* AI CENTRAL CONTROL MODULE */}
-          <div className="bg-neutral-900/80 border border-neutral-800 p-4 rounded mb-6 border-l-4 border-l-amber-500 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-xl">
-            <div className="space-y-0.5">
-              <span className="text-xs font-black text-amber-400 block tracking-widest">⭐ STAR PLAYER: COGNITIVE AI DIRECTOR ({aiMode})</span>
+          {/* STAR PLAYER COGNITIVE AI DIRECTOR CENTRAL */}
+          <div className="bg-neutral-900/40 border border-neutral-800 p-5 rounded-xl border-l-4 border-l-[#FFB800] flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-2xl backdrop-blur-sm">
+            <div className="space-y-1">
+              <span className="text-xs font-black text-[#FFB800] block tracking-widest">⭐ STAR PLAYER: COGNITIVE AI DIRECTOR ({aiMode})</span>
               <p className="text-xs text-neutral-300 italic">"{aiText}"</p>
             </div>
             <div className="flex gap-2 shrink-0">
-              <button onClick={() => { setAiMode('Co-Pilot'); setAiText('Ready to assist alongside your configurations.'); }} className={`px-3 py-1 text-[10px] font-bold border rounded transition ${aiMode === 'Co-Pilot' ? 'bg-amber-500/20 text-amber-400 border-amber-500' : 'bg-neutral-950 text-neutral-500 border-neutral-800'}`}>CO-PILOT</button>
-              <button onClick={triggerAutopilot} className={`px-3 py-1 text-[10px] font-bold border rounded transition ${aiMode === 'Auto-Pilot' ? 'bg-red-500/20 text-red-400 border-red-500' : 'bg-neutral-950 text-neutral-500 border-neutral-800'}`}>AUTOPILOT (FULL MOVIE)</button>
+              <button onClick={() => { setAiMode('Co-Pilot'); setAiText('Ready to assist with casting inputs.'); }} className={`px-4 py-1.5 text-[11px] font-bold border rounded-lg transition ${aiMode === 'Co-Pilot' ? 'bg-cyan-500/10 text-cyan-400 border-cyan-500' : 'bg-neutral-950 text-neutral-500 border-neutral-800'}`}>CO-PILOT</button>
+              <button onClick={triggerAutopilot} className={`px-4 py-1.5 text-[11px] font-bold border rounded-lg transition ${aiMode === 'Auto-Pilot' ? 'bg-red-500/20 text-red-400 border-red-500' : 'bg-neutral-950 text-neutral-500 border-neutral-800'}`}>AUTOPILOT (FULL MOVIE)</button>
             </div>
           </div>
 
-          {/* PIPELINE ROUTING NAVIGATION TAB MATRIX */}
-          <div className="flex gap-1 border-b border-neutral-800 pb-3 mb-6 overflow-x-auto whitespace-nowrap">
-            {['movie-engine', 'asset-bin', 'cast-forge', 'sound-stage', 'animation-sync', 'executive-vault'].map((tab) => (
-              <button key={tab} onClick={() => setActiveTab(tab)} className={`px-4 py-2 text-xs font-black uppercase rounded transition tracking-wider ${activeTab === tab ? 'bg-amber-500 text-black shadow-lg font-black' : 'bg-neutral-900/60 text-neutral-400 hover:bg-neutral-900'}`}>
-                {tab.replace('-', ' ')}
-              </button>
-            ))}
-          </div>
-
-          {/* MASTER CORE COMPONENT LOADER DISPLAY */}
-          <main className="flex-1 bg-neutral-900/20 border border-neutral-800 rounded-xl p-6 backdrop-blur">
-            {activeTab === 'movie-engine' && (
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div className="lg:col-span-2 space-y-4">
-                  <h3 className="text-xs font-black text-amber-400 uppercase tracking-widest">🎬 MOVIE ENGINE DIRECTING SCREEN</h3>
-                  <textarea defaultValue={"INT. KING STUDIO - NIGHT\nAutonomous AI Core processing motion vectors at 8K resolution..."} className="w-full h-56 bg-neutral-950 border border-neutral-800 rounded-lg p-4 text-xs font-mono text-neutral-200 leading-relaxed focus:outline-none focus:border-amber-500 resize-none shadow-inner" />
+          {/* SINGLE VIEW CINEMATIC COMMAND CENTER PANELS */}
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start">
+            
+            {/* COLUMN 1: SCREENPLAY EDITOR & VIDEO FEED */}
+            <div className="xl:col-span-2 space-y-6">
+              <div className="bg-neutral-900/20 border border-neutral-800 rounded-xl p-5 space-y-4">
+                <div className="flex justify-between items-center border-b border-neutral-800 pb-2">
+                  <h3 className="text-xs font-black text-cyan-400 uppercase tracking-widest">🎬 HOLLYWOOD FILM ENGINE</h3>
+                  <span className="text-[10px] text-neutral-500">TIME TRACK: <strong className="text-amber-500">00:14:23:12</strong></span>
                 </div>
-                <div className="bg-neutral-950 border border-neutral-800 p-4 rounded-lg flex flex-col justify-between">
-                  <div>
-                    <span className="text-[10px] font-bold text-neutral-500 block uppercase mb-2">Sovereign VLC Stream Monitoring Engine</span>
-                    <div className="bg-black aspect-video rounded border border-neutral-800 flex items-center justify-center text-xs text-neutral-500 font-bold relative">
-                      🎞️ HIGH-PERFORMANCE VIDEO FEED
-                      <div className="absolute bottom-2 right-2 text-[9px] bg-black/80 px-2 py-0.5 rounded text-neutral-400 font-black">MADE WITH KING STUDIO</div>
-                    </div>
-                  </div>
-                  <div className="flex justify-between text-[10px] text-neutral-500 mt-4">
-                    <span>TIMECODE: SMPTE SYNC</span>
-                    <span className="text-amber-400 font-bold">00:14:23:12</span>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {activeTab === 'asset-bin' && (
-              <div className="space-y-4">
-                <h3 className="text-xs font-black text-amber-400 uppercase tracking-widest">📁 AUTOMATED B-ROLL & stock ASSET BIN</h3>
-                <p className="text-xs text-neutral-400">AI automatically generates multi-angle background clips matching screenplay lines.</p>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
-                  {['Atmospheric Smoke Trail', 'City Skyline Overhead', 'High-Shutter Car Chase Loop', 'Low-Key Suspense Corridor'].map((item) => (
-                    <div key={item} className="bg-neutral-950 border border-neutral-800 p-4 rounded-lg text-center hover:border-neutral-600 transition cursor-pointer">
-                      <span className="block text-lg mb-1">🎬</span>
-                      <span className="text-[10px] font-bold text-neutral-300 block leading-tight">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {activeTab === 'cast-forge' && (
-              <div className="space-y-6">
-                <div className="flex flex-wrap justify-between items-center border-b border-neutral-800 pb-3 gap-2">
-                  <h3 className="text-xs font-black text-amber-400 uppercase tracking-widest">👥 CAST FORGE & INTERACTIVE WARDROBE</h3>
-                  <div className="flex gap-1 bg-neutral-950 p-1 rounded border border-neutral-800">
-                    {['Nova', 'Kaz', 'Lex'].map((act) => (
-                      <button key={act} onClick={() => setSelectedActor(act)} className={`px-3 py-1 text-[10px] font-bold rounded ${selectedActor === act ? 'bg-amber-500 text-black' : 'text-neutral-400 hover:text-neutral-200'}`}>{act}</button>
+                <textarea defaultValue={"INT. KING STUDIO - NIGHT\n\nThe Starlink data nodes lock framework boundaries.\n\nThe Cognitive AI Core flashes green, initializing a hyper-shutter 8K render pass..."} className="w-full h-44 bg-neutral-950 border border-neutral-800 rounded-lg p-4 text-xs font-mono text-neutral-200 leading-relaxed focus:outline-none focus:border-cyan-500 resize-none shadow-inner" />
+                
+                {/* Embedded B-Roll Strip */}
+                <div className="space-y-2 pt-2">
+                  <span className="text-[10px] text-neutral-500 uppercase font-bold block">Automated Stock Cutaways Bin</span>
+                  <div className="grid grid-cols-3 gap-3">
+                    {['Studio Glow', 'Anamorphic Flare', 'Node Telemetry'].map((item) => (
+                      <div key={item} className="bg-neutral-950 border border-neutral-800 p-3 rounded-lg text-center text-[10px] font-bold text-neutral-300 hover:border-cyan-500 transition cursor-pointer">🎞️ {item}</div>
                     ))}
                   </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="bg-neutral-950 border border-neutral-800 p-4 rounded-lg space-y-3">
-                    <span className="text-[10px] text-neutral-400 font-bold block uppercase tracking-wider">Synthetic Wardrobe Garments</span>
-                    <div className="grid grid-cols-2 gap-2">
-                      {['Royal Tuxedo', 'Cyberpunk Matrix Vane', 'Classic Noir Trenchcoat', 'Tactical Operative Armor', 'Elite Gown Gold', 'Casual Linen Shirt'].map((suit) => (
-                        <button key={suit} onClick={() => setSelectedOutfit(suit)} className={`p-2 rounded text-[10px] text-left border transition font-bold ${selectedOutfit === suit ? 'bg-amber-500/10 text-amber-400 border-amber-500' : 'bg-neutral-900 border-neutral-800 text-neutral-500 hover:bg-neutral-800'}`}>{suit}</button>
-                      ))}
-                    </div>
+              </div>
+
+              {/* Luxury Music Matrix Mixer */}
+              <div className="bg-neutral-900/20 border border-neutral-800 rounded-xl p-5 space-y-4">
+                <h3 className="text-xs font-black text-cyan-400 uppercase tracking-widest">🔊 LUXURY MIXING SUITE AUDIO</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <span className="text-[10px] text-neutral-400 block uppercase">Neural Vocal Timbre Cadence Clone</span>
+                    <input type="text" value={vocalsCadence} onChange={(e) => setVocalsCadence(e.target.value)} className="w-full bg-neutral-950 border border-neutral-800 rounded p-2 text-xs text-amber-500 font-bold focus:outline-none" />
                   </div>
+                  <div className="flex flex-col justify-end space-y-2">
+                    <button onClick={() => setHummingActive(!hummingActive)} className={`w-full py-2 text-xs font-bold rounded-lg transition border ${hummingActive ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500 animate-pulse' : 'bg-neutral-950 text-neutral-500 border-neutral-800'}`}>{hummingActive ? '🎙️ HUMMING CLOCK ACTIVE' : 'ENGAGE MIC HUMMING PATH'}</button>
+                  </div>
+                </div>
+                {/* Remixer Equalizer Deck Sliders */}
+                <div className="p-4 bg-neutral-950 border border-neutral-800 rounded-lg space-y-3 text-xs">
+                  <div className="flex justify-between border-b border-neutral-800 pb-1 font-bold text-[10px] text-neutral-500"><span>STEM SPLITTER DECK</span><span>LIP SYNC: {lipSyncStatus}</span></div>
+                  {['Drums volume', 'Bass tracking', 'Vocals bypass', 'Melody matrix'].map((stem) => (
+                    <div key={stem} className="flex items-center space-x-4"><span className="w-28 text-neutral-400 text-[10px] uppercase font-bold">{stem}</span><input type="range" className="w-full accent-cyan-500" /></div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* COLUMN 2: AVATAR SHAPER & VAULTS */}
+            <div className="space-y-6">
+              {/* Cast Forge & Biometric Viewfinder */}
+              <div className="bg-neutral-900/20 border border-neutral-800 rounded-xl p-5 space-y-4">
+                <div className="flex justify-between items-center border-b border-neutral-800 pb-2">
+                  <h3 className="text-xs font-black text-cyan-400 uppercase tracking-widest">👥 CAST FORGE &amp; WARDROBE</h3>
+                  <div className="flex gap-1 bg-neutral-950 p-1 rounded border border-neutral-800 text-[9px] font-bold">
+                    {['Nova', 'Kaz', 'Lex'].map((act) => (
+                      <button key={act} onClick={() => setSelectedActor(act)} className={`px-2 py-0.5 rounded ${selectedActor === act ? 'bg-cyan-500 text-black' : 'text-neutral-500'}`}>{act}</button>
+                    ))}
+                  </div>
+                </div>
+                <div className="p-3 bg-neutral-950 border border-neutral-800 rounded-lg text-center space-y-2">
+                  <div className="w-12 h-12 rounded-full border border-dashed border-cyan-500/40 flex items-center justify-center text-lg mx-auto">📷</div>
